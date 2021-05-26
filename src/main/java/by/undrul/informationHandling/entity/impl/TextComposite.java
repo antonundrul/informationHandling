@@ -41,4 +41,20 @@ public class TextComposite implements TextComponent {
     public List<TextComponent> getChildList() {
         return components;
     }
+
+    @Override
+    public int getChildListSize() {
+        List<TextComponent> textComponents = getChildList();
+        return textComponents.size();
+    }
+
+    @Override
+    public String toString() {
+        var stringBuilder = new StringBuilder();
+        for (TextComponent textComponent : components){
+            stringBuilder.append(textComponent);
+            stringBuilder.append(componentType.getDelimiter());
+        }
+        return stringBuilder.toString();
+    }
 }

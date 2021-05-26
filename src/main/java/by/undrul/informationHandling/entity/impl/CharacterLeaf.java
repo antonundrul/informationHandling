@@ -14,6 +14,10 @@ public class CharacterLeaf implements TextComponent {
         this.componentType = componentType;
     }
 
+    public char getSymbol() {
+        return symbol;
+    }
+
     @Override
     public void add(TextComponent component) {
         throw new UnsupportedOperationException();
@@ -37,5 +41,15 @@ public class CharacterLeaf implements TextComponent {
     @Override
     public List<TextComponent> getChildList() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getChildListSize() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(symbol);
     }
 }

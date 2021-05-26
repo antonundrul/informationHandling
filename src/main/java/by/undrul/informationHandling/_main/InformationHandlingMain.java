@@ -5,6 +5,11 @@ import by.undrul.informationHandling.entity.impl.TextComposite;
 import by.undrul.informationHandling.exception.HandlingException;
 import by.undrul.informationHandling.parser.impl.*;
 import by.undrul.informationHandling.reader.impl.DataReaderImpl;
+import by.undrul.informationHandling.service.TextService;
+import by.undrul.informationHandling.service.impl.TextServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 /**
  * Hello world!
@@ -12,6 +17,7 @@ import by.undrul.informationHandling.reader.impl.DataReaderImpl;
  */
 public class InformationHandlingMain
 {
+    private static Logger logger= LogManager.getLogger();
     public static void main( String[] args )
     {
         String filepath = "./src/main/resources/data/data.txt";
@@ -27,7 +33,24 @@ public class InformationHandlingMain
 
             TextComposite component = new TextComposite(ComponentType.TEXT);
             paragraphParser.parseText(component, datafromFile);
-            System.out.println(paragraphParser);
+            logger.info(paragraphParser);
+
+            TextService service= new TextServiceImpl();
+
+            service.sortParagraphsByAmountOfSentences(component);
+            logger.info(component);
+
+            service.findSentenceWithLongestWord(component);
+
+            logger.info(service.findIdenticalWords(component));
+
+            service.countVowels(component);
+            service.countСonsonants(component);
+
+            service.removeSentencesWithLessNumberOfWords(component,20);
+            logger.info(component);
+
+
 
         } catch (HandlingException e) {
             e.printStackTrace();

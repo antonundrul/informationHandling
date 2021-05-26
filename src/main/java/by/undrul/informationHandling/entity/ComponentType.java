@@ -5,9 +5,8 @@ public enum ComponentType {
     PARAGRAPH(" "),
     SENTENCE(" "),
     LEXEME(""),
-    WORD("  "),
-    LETTER(""),
-    PUNCTUATION("");
+    WORD(""),
+    LETTER("");
 
     private final String delimiter;
 
